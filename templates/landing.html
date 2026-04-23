@@ -15,7 +15,14 @@
 
     <header class="topbar">
         <div class="brand">Smart Spam Detector</div>
-        <nav class="topnav">
+
+        <button class="menu-toggle" id="menuToggle" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobileNav">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+
+        <nav class="topnav" id="mobileNav">
             <a href="#features">Features</a>
             <a href="#workflow">How It Works</a>
             <a href="#why-it-matters">Why It Matters</a>
@@ -33,7 +40,7 @@
             </h1>
 
             <p>
-                ThreatLens AI is a smart detection platform that analyzes SMS, Email, and direct links
+                Smart Spam Detector is a smart detection platform that analyzes SMS, Email, and direct links
                 to identify spam, suspicious URLs, and phishing-like patterns using machine learning and
                 intelligent rule-based checks.
             </p>
@@ -193,6 +200,25 @@ const spotlight = document.querySelector(".spotlight");
 document.addEventListener("mousemove", (e) => {
     spotlight.style.left = e.clientX + "px";
     spotlight.style.top = e.clientY + "px";
+});
+
+const menuToggle = document.getElementById("menuToggle");
+const mobileNav = document.getElementById("mobileNav");
+
+menuToggle.addEventListener("click", () => {
+    mobileNav.classList.toggle("nav-open");
+    menuToggle.classList.toggle("active");
+
+    const expanded = menuToggle.getAttribute("aria-expanded") === "true";
+    menuToggle.setAttribute("aria-expanded", String(!expanded));
+});
+
+mobileNav.querySelectorAll("a").forEach(link => {
+    link.addEventListener("click", () => {
+        mobileNav.classList.remove("nav-open");
+        menuToggle.classList.remove("active");
+        menuToggle.setAttribute("aria-expanded", "false");
+    });
 });
 </script>
 
