@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Smart Spam Detector</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="landing-dark">
+
+<div class="dark-bg"></div>
+<div class="spotlight"></div>
+
+<div class="landing-shell page-content">
+
+    <header class="topbar">
+        <div class="brand">Smart Spam Detector</div>
+        <nav class="topnav">
+            <a href="#features">Features</a>
+            <a href="#workflow">How It Works</a>
+            <a href="#why-it-matters">Why It Matters</a>
+            <a href="/detect" class="nav-cta transition-link">Launch</a>
+        </nav>
+    </header>
+
+    <section class="hero-saas">
+        <div class="hero-copy">
+            <div class="hero-badge">AI-powered Spam & Link Detection System</div>
+
+            <h1>
+                Detect suspicious content
+                <span>before it becomes a real risk</span>
+            </h1>
+
+            <p>
+                ThreatLens AI is a smart detection platform that analyzes SMS, Email, and direct links
+                to identify spam, suspicious URLs, and phishing-like patterns using machine learning and
+                intelligent rule-based checks.
+            </p>
+
+            <div class="hero-actions">
+                <a href="/detect" class="primary-cta transition-link">Launch Scanner</a>
+                <a href="#features" class="secondary-cta">Explore Features</a>
+            </div>
+
+            <div class="hero-meta">
+                <div class="meta-item">
+                    <strong>3 Input Modes</strong>
+                    <span>SMS, Email, Link</span>
+                </div>
+                <div class="meta-item">
+                    <strong>Threat Analysis</strong>
+                    <span>Spam + suspicious link checks</span>
+                </div>
+                <div class="meta-item">
+                    <strong>Risk Scoring</strong>
+                    <span>Low, Medium, High</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="hero-preview">
+            <div class="preview-card-main gradient-border-card">
+                <div class="preview-header">
+                    <div class="preview-dots">
+                        <span></span><span></span><span></span>
+                    </div>
+                    <div class="preview-title">Threat Analysis Preview</div>
+                </div>
+
+                <div class="preview-panel premium-danger">
+                    <div class="preview-row">
+                        <span class="preview-label">SMS</span>
+                        <span class="pill-danger">HIGH RISK</span>
+                    </div>
+                    <p>Click http://bit.ly/free-now to claim your reward immediately.</p>
+                </div>
+
+                <div class="preview-panel premium-danger">
+                    <div class="preview-row">
+                        <span class="preview-label">LINK</span>
+                        <span class="pill-danger">SUSPICIOUS</span>
+                    </div>
+                    <p>http://tinyurl.com/verify-account-now</p>
+                </div>
+
+                <div class="preview-panel premium-safe">
+                    <div class="preview-row">
+                        <span class="preview-label">EMAIL</span>
+                        <span class="pill-safe">LOW RISK</span>
+                    </div>
+                    <p>Hello, your meeting is scheduled for tomorrow at 11 AM.</p>
+                </div>
+
+                <div class="preview-footer">
+                    Spam classification, suspicious link detection, and risk evaluation
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="feature-strip" id="features">
+        <div class="saas-feature-card gradient-border-card">
+            <div class="icon-circle">📱</div>
+            <h3>SMS Detection</h3>
+            <p>Analyzes short messages to identify spam, misleading promotions, and suspicious text patterns.</p>
+        </div>
+
+        <div class="saas-feature-card gradient-border-card">
+            <div class="icon-circle">📧</div>
+            <h3>Email Detection</h3>
+            <p>Classifies email-style content and predicts whether the message is safe or potentially harmful.</p>
+        </div>
+
+        <div class="saas-feature-card gradient-border-card">
+            <div class="icon-circle">🔗</div>
+            <h3>Phishing Link Detection</h3>
+            <p>Checks links for insecure URLs, shortened domains, and suspicious URL structures.</p>
+        </div>
+    </section>
+
+    <section class="workflow-section gradient-border-card" id="workflow">
+        <div class="section-heading">
+            <span class="mini-label">Workflow</span>
+            <h2>How the system works</h2>
+            <p>A simple step-by-step process for message and link threat analysis.</p>
+        </div>
+
+        <div class="workflow-grid">
+            <div class="workflow-card">
+                <div class="workflow-number">01</div>
+                <h3>Select Input Type</h3>
+                <p>Choose whether you want to analyze an SMS, an Email, or a direct Link.</p>
+            </div>
+
+            <div class="workflow-card">
+                <div class="workflow-number">02</div>
+                <h3>Run Detection</h3>
+                <p>The system processes the content using machine learning and link analysis rules.</p>
+            </div>
+
+            <div class="workflow-card">
+                <div class="workflow-number">03</div>
+                <h3>View Result</h3>
+                <p>Get prediction, confidence score, total links, and overall risk level instantly.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="workflow-section gradient-border-card" id="why-it-matters">
+        <div class="section-heading">
+            <span class="mini-label">Why It Matters</span>
+            <h2>Why this system is useful</h2>
+            <p>The platform is designed to provide more than basic spam classification.</p>
+        </div>
+
+        <div class="workflow-grid">
+            <div class="workflow-card">
+                <div class="workflow-number">01</div>
+                <h3>Broader Detection</h3>
+                <p>It does not only classify messages, but also checks URLs and suspicious content indicators.</p>
+            </div>
+
+            <div class="workflow-card">
+                <div class="workflow-number">02</div>
+                <h3>Clear Risk Output</h3>
+                <p>The result becomes easier to understand with Low, Medium, or High risk evaluation.</p>
+            </div>
+
+            <div class="workflow-card">
+                <div class="workflow-number">03</div>
+                <h3>Real-World Use</h3>
+                <p>Supports SMS, Email, and direct links in one platform for a more practical security workflow.</p>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<script>
+document.querySelectorAll(".transition-link").forEach(link => {
+    link.addEventListener("click", function(e) {
+        e.preventDefault();
+        document.body.classList.add("page-exit");
+        const target = this.getAttribute("href");
+        setTimeout(() => {
+            window.location.href = target;
+        }, 400);
+    });
+});
+
+const spotlight = document.querySelector(".spotlight");
+document.addEventListener("mousemove", (e) => {
+    spotlight.style.left = e.clientX + "px";
+    spotlight.style.top = e.clientY + "px";
+});
+</script>
+
+</body>
+</html>

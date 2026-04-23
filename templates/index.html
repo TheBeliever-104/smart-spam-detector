@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Spam Detector</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body class="detect-dark">
+
+<div class="dark-bg"></div>
+<div class="spotlight"></div>
+
+<div class="detect-shell page-content">
+
+    <div class="detect-topbar">
+        <div class="brand">Smart Spam Detector</div>
+        <a href="/" class="detect-home-link transition-link">← Home</a>
+    </div>
+
+    <div class="detect-layout">
+
+        <div class="detect-info-panel gradient-border-card">
+            <div class="detect-badge">Threat Analysis Engine</div>
+
+            <h1>Real-time message and link inspection</h1>
+
+            <p>
+                This system evaluates messages using machine learning and rule-based analysis to detect spam and suspicious links.
+            </p>
+
+            <div class="detect-points">
+                <div class="detect-point-card">
+                    <strong>Spam Classification</strong>
+                    <span>ML model predicts spam or safe content</span>
+                </div>
+
+                <div class="detect-point-card">
+                    <strong>Link Inspection</strong>
+                    <span>Detects suspicious and unsafe URLs</span>
+                </div>
+
+                <div class="detect-point-card">
+                    <strong>Confidence Score</strong>
+                    <span>Shows prediction accuracy</span>
+                </div>
+
+                <div class="detect-point-card">
+                    <strong>Risk Level</strong>
+                    <span>Low, Medium, High classification</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="detect-form-panel">
+            <div class="form-card gradient-border-card">
+                <h2>Launch Detection</h2>
+
+                <form id="spamForm" action="/predict" method="post">
+                    <label for="type">Message Type</label>
+                    <select name="type" id="type">
+                        <option value="sms">SMS</option>
+                        <option value="email">Email</option>
+                        <option value="link">Link</option>
+                    </select>
+
+                    <label for="message">Message Content</label>
+                    <textarea name="message" id="message" rows="6" placeholder="Enter message here..." required></textarea>
+
+                    <button type="submit">Check Message</button>
+                </form>
+
+                <div id="loader" class="loader hidden"></div>
+
+                {% if prediction %}
+                    <div class="result {{ 'spam' if prediction == 'Spam' else 'ham' }}">
+                        <h3>{{ prediction }}</h3>
+                        <p>Confidence: {{ confidence }}%</p>
+
+                        <div class="extra-info">
+                            <p><strong>Total Links:</strong> {{ links.total_links }}</p>
+
+                            {% if links.is_suspicious %}
+                                <p class="warning">⚠ Suspicious links detected</p>
+                            {% else %}
+                                <p class="safe">No suspicious links</p>
+                            {% endif %}
+                        </div>
+
+                        <p class="risk"><strong>Risk Level:</strong> {{ risk }}</p>
+
+                        {% if links.details %}
+                            <div class="link-analysis">
+                                <h4>Link Analysis</h4>
+
+                                {% for item in links.details %}
+                                    <div class="link-card">
+                                        <p><strong>URL:</strong> {{ item.url }}</p>
+                                        <p><strong>Risk:</strong> {{ item.risk }}</p>
+                                        <p><strong>Score:</strong> {{ item.score }}</p>
+
+                                        {% if item.flags %}
+                                            <ul>
+                                                {% for flag in item.flags %}
+                                                    <li>{{ flag }}</li>
+                                                {% endfor %}
+                                            </ul>
+                                        {% else %}
+                                            <p class="safe">No suspicious indicators found</p>
+                                        {% endif %}
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        {% endif %}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+document.getElementById("spamForm").addEventListener("submit", function() {
+    document.getElementById("loader").classList.remove("hidden");
+});
+
+document.querySelectorAll(".transition-link").forEach(link => {
+    link.addEventListener("click", function(e) {
+        e.preventDefault();
+        document.body.classList.add("page-exit");
+        const target = this.getAttribute("href");
+        setTimeout(() => {
+            window.location.href = target;
+        }, 400);
+    });
+});
+
+const spotlight = document.querySelector(".spotlight");
+document.addEventListener("mousemove", (e) => {
+    spotlight.style.left = e.clientX + "px";
+    spotlight.style.top = e.clientY + "px";
+});
+
+const typeSelect = document.getElementById("type");
+const textarea = document.getElementById("message");
+
+typeSelect.addEventListener("change", () => {
+    if (typeSelect.value === "link") {
+        textarea.placeholder = "Paste URL here...";
+    } else {
+        textarea.placeholder = "Enter message here...";
+    }
+});
+</script>
+
+</body>
+</html>

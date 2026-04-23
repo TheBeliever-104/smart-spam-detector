@@ -1,0 +1,8 @@
+Flask
+gunicorn
+Werkzeug
+scikit-learn
+numpy
+scipy
+joblib
+threadpoolctl
